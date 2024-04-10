@@ -5,7 +5,7 @@ import Instructions from "./Instructions";
 const Home = () => {
 
     return(
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center p-10">
             <div className="flex flex-col justify-center items-center">
                 <div className="">
                     <h1 className="font-bold text-dusty-rose mx-auto text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">Rock-Paper-Scissors</h1>
