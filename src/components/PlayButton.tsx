@@ -1,9 +1,14 @@
 import React from "react";
 
-const PlayButton = () => {
+type PlayButtonProps = {
+    isGameOver: boolean;
+    setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const PlayButton : React.FC<PlayButtonProps> = ({ isGameOver, setIsGameOver }) => {
     
     const playButtonAction = () => {
-        console.log('test button;')
+        setIsGameOver(!isGameOver);
     };
     return(
         <div className="flex flex-col justify-center items-center mt-10">

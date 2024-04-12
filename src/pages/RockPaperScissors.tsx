@@ -4,22 +4,26 @@ import Home from '../components/Home';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import ScoreBoard from '../components/ScoreBoard';
-import Game from '../components/Game';
+import GameProps from '../components/Game';
 import Instructions from '../components/Instructions';
 import PlayButton from '../components/PlayButton';
+import Game from '../components/Game';
 
 const RockPaperScissors = () => {
+
     const [playerWin, setPlayerWin] = useState("");
     const [player1, setPlayer1] = useState("");
     const [player2, setPlayer2] = useState("");
     const [scorePlayer1, setScorePlayer1] = useState(0);
     const [scorePlayer2, setScorePlayer2] = useState(0);
-    const [isGameOver, setIsGameOver] = useState(false);
+    const [isGameOver, setIsGameOver] = useState(true);
 
     const options = ["rock", "paper", "scissors"];
 
     const handleResetGame = () => {
-        setIsGameOver(false);
+        setIsGameOver(true);
+        setScorePlayer1(0);
+        setScorePlayer2(0);
     };
 
     return (
@@ -27,7 +31,7 @@ const RockPaperScissors = () => {
             <div>
                 {isGameOver ? (
                     <>
-                        <Home />
+                        <Home isGameOver={isGameOver} setIsGameOver={setIsGameOver}  />
                     </>
                 ) : (
                     <>

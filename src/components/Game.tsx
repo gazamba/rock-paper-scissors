@@ -1,6 +1,6 @@
 import React from "react";
 
-type Game = {
+type GameProps = {
     player1: string;
     player2: string;
     playerWin: any;
@@ -15,7 +15,7 @@ type Game = {
     onResetGame: () => void;
 }
 
-const Game: React.FC<Game> = ({ player1, setPlayer1, player2, setPlayer2, playerWin, setPlayerWin, setScorePlayer1, setScorePlayer2, scorePlayer1, scorePlayer2, options, onResetGame }) => {
+const Game: React.FC<GameProps> = ({ player1, setPlayer1, player2, setPlayer2, playerWin, setPlayerWin, setScorePlayer1, setScorePlayer2, scorePlayer1, scorePlayer2, options, onResetGame }) => {
 
     const computerChoice = () => {
         const randomIndex: number = Math.floor(Math.random() * options.length);
@@ -24,8 +24,6 @@ const Game: React.FC<Game> = ({ player1, setPlayer1, player2, setPlayer2, player
     const onClickChoice = (player1Choice:string) => {
         let computerChoiceRandom = computerChoice();
         setPlayer1(player1Choice);
-        console.log("player 1: " + player1Choice)
-        console.log("computer: " + computerChoiceRandom);
 
         if(computerChoiceRandom === player1Choice){
             setPlayerWin("");
@@ -36,19 +34,19 @@ const Game: React.FC<Game> = ({ player1, setPlayer1, player2, setPlayer2, player
             setPlayerWin("Player 1");
             setScorePlayer1(scorePlayer1 + 1);
         } else if (player1Choice === "rock" && computerChoiceRandom === "paper"){
-            setPlayerWin("player 2")
+            setPlayerWin("Player 2")
             setScorePlayer2(scorePlayer2 + 1);
         } else if (player1Choice === "paper" && computerChoiceRandom === "rock"){
             setPlayerWin("Player 1");
             setScorePlayer1(scorePlayer1 + 1);
         }  else if (player1Choice === "paper" && computerChoiceRandom === "scissors"){
-            setPlayerWin("player 2")
+            setPlayerWin("Player 2")
             setScorePlayer2(scorePlayer2 + 1);
         } else if (player1Choice === "scissors" && computerChoiceRandom === "paper"){
             setPlayerWin("Player 1");
             setScorePlayer1(scorePlayer1 + 1);
         } else if (player1Choice === "scissors" && computerChoiceRandom === "rock"){
-            setPlayerWin("player 2")
+            setPlayerWin("Player 2")
             setScorePlayer2(scorePlayer2 + 1);
         }
     }

@@ -2,7 +2,12 @@ import React from "react";
 import PlayButton from "./PlayButton";
 import Instructions from "./Instructions";
 
-const Home = () => {
+type HomeProps = {
+    isGameOver: boolean;
+    setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Home : React.FC<HomeProps> = ({ isGameOver, setIsGameOver })  => {
 
     return(
         <div className="flex flex-col justify-center items-center p-10">
@@ -14,7 +19,7 @@ const Home = () => {
                     <img className="max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl h-auto" src="src/assets/rock-paper-scissors-home.svg" alt="logo"/>
                 </div>    
             </div>
-            <PlayButton/>
+            <PlayButton isGameOver={isGameOver} setIsGameOver={setIsGameOver}/>
             <Instructions/>
         </div>
     );
