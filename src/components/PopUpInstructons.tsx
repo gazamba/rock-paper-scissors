@@ -1,11 +1,11 @@
 import React from "react";
 
-type PopUpProps = {
+type PopUpInstructionsProps = {
   isOpen:boolean,
   onClose:()=> void;
 }
 
-const PopUp = ({ isOpen, onClose } :PopUpProps) => {
+const PopUpInstructions = ({ isOpen, onClose } :PopUpInstructionsProps) => {
     return (
       <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 px-4 ${isOpen ? 'block' : 'hidden'}`}>
         <div className="bg-dark-red p-8 rounded-lg">
@@ -29,4 +29,4 @@ const PopUp = ({ isOpen, onClose } :PopUpProps) => {
     );
   };
 
-  export default PopUp;
+  export default PopUpInstructions;

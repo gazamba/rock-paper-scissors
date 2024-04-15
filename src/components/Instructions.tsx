@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import PopUp from "./PopUp";
+import { useState } from "react";
+import PopUpInstructions from "./PopUpInstructons";
 
 const Instructions = () => {
 
@@ -14,7 +14,7 @@ const Instructions = () => {
       <div className="flex items-center">
         <button onClick={instructionsPopUp} className="text-dusty-rose px-8 py-5 rounded-lg text-2xl shadow-lg hover:bg-dusty-rose hover:text-dark-red">Instructions</button>
       </div>
-      <PopUp isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)} />
+      <PopUpInstructions isOpen={isPopUpOpen} onClose={() => setIsPopUpOpen(false)} />
     </div>
   );
 };

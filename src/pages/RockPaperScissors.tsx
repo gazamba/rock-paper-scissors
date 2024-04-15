@@ -4,9 +4,6 @@ import Home from '../components/Home';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import ScoreBoard from '../components/ScoreBoard';
-import GameProps from '../components/Game';
-import Instructions from '../components/Instructions';
-import PlayButton from '../components/PlayButton';
 import Game from '../components/Game';
 
 const RockPaperScissors = () => {
