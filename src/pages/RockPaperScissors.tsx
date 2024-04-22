@@ -1,24 +1,28 @@
 import { useState } from 'react';
 import '../index.css';
-import Home from '../components/Home';
-import Header from '../components/Header';
-import Layout from '../components/Layout';
+import Play from './Play';
+import HeaderGame from '../components/HeaderGame';
+import Layout from '../router/Layout';
 import ScoreBoard from '../components/ScoreBoard';
 import Game from '../components/Game';
 
 const RockPaperScissors = () => {
 
     const [playerWin, setPlayerWin] = useState("");
+    const [choiceWinner, setChoiceWinner] = useState("");
+    const [choiceLoser, setChoiceLoser] = useState("");
     const [player1, setPlayer1] = useState("");
     const [player2, setPlayer2] = useState("");
     const [scorePlayer1, setScorePlayer1] = useState(0);
     const [scorePlayer2, setScorePlayer2] = useState(0);
     const [isGameOver, setIsGameOver] = useState(true);
 
-    const options = ["rock", "paper", "scissors"];
-
     const handleResetGame = () => {
-        setIsGameOver(true);
+        setPlayerWin("");
+        setChoiceWinner("");
+        setChoiceLoser("");
+        setPlayer1("");
+        setPlayer2("");
         setScorePlayer1(0);
         setScorePlayer2(0);
     };
@@ -28,12 +32,14 @@ const RockPaperScissors = () => {
             <div>
                 {isGameOver ? (
                     <>
-                        <Home isGameOver={isGameOver} setIsGameOver={setIsGameOver}  />
+                        <Play/>
                     </>
                 ) : (
                     <>
-                        <Header />
+                        <HeaderGame />
                         <Game
+                            isGameOver={isGameOver}
+                            setIsGameOver={setIsGameOver}
                             options={options}
                             player1={player1}
                             setPlayer1={setPlayer1}
@@ -41,6 +47,10 @@ const RockPaperScissors = () => {
                             setPlayer2={setPlayer2}
                             playerWin={playerWin}
                             setPlayerWin={setPlayerWin}
+                            choiceWinner={choiceWinner}
+                            setChoiceWinner={setChoiceWinner}
+                            choiceLoser={choiceLoser}
+                            setChoiceLoser={setChoiceLoser}
                             scorePlayer1={scorePlayer1}
                             setScorePlayer1={setScorePlayer1}
                             scorePlayer2={scorePlayer2}
