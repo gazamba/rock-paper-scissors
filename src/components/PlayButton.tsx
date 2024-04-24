@@ -1,14 +1,12 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
-type PlayButtonProps = {
-    isGameOver: boolean;
-    setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const PlayButton : React.FC<PlayButtonProps> = ({ isGameOver, setIsGameOver }) => {
+const PlayButton = () => {
     
+    const navigate = useNavigate();
+
     const playButtonAction = () => {
-        setIsGameOver(!isGameOver);
+        navigate("/game");
     };
     return(
         <div className="flex flex-col justify-center items-center mt-10">
@@ -18,3 +16,4 @@ const PlayButton : React.FC<PlayButtonProps> = ({ isGameOver, setIsGameOver }) =
 }
 
 export default PlayButton;
+

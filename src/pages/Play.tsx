@@ -1,12 +1,11 @@
-import React from "react";
 import PlayButton from "../components/PlayButton";
-import Instructions from "../components/Instructions";
 import { HandRock } from "../components/icons/HandRock";
 import { HandPaper } from "../components/icons/HandPaper";
 import { HandScissors } from "../components/icons/HandScissors";
+import InstructionsButton from "../components/InstructionsButton";
 
 
-const Play: React.FC = () => {
+const Play = () => {
     return (
         <div className="flex flex-col justify-center items-center p-10">
             <div className="text-center mb-10">
@@ -19,7 +18,7 @@ const Play: React.FC = () => {
             </div>
             <div className="flex flex-col items-center gap-5">
                 <PlayButton/>
-                <Instructions/>
+                <InstructionsButton/>
             </div>
         </div>
     );

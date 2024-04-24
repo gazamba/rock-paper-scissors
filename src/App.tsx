@@ -1,13 +1,11 @@
-import React from 'react';
 import './index.css'
-import RockPaperScissors from './pages/RockPaperScissors';
+import Router from './router';
 
 function App() {
   
   return (
-    <>
-      <RockPaperScissors/>
-    </>
+    <Router/>
+    
   )
 }
 

@@ -4,9 +4,7 @@ import HeaderGame from '../components/HeaderGame';
 const Game = () => {
     return (
         <div>
-            <HeaderGame/>
-            <div>teste</div>
-            
+            <HeaderGame></HeaderGame>
         </div>
     );
 };
