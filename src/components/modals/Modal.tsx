@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { cn } from './utils/cn';
+import { cn } from '../../utils/cn';
 
 type ModalProps = {
   shouldModalRender: boolean;

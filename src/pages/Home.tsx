@@ -5,7 +5,7 @@ import { HandScissors } from "../components/icons/HandScissors";
 import InstructionsButton from "../components/InstructionsButton";
 
 
-const Play = () => {
+const Home = () => {
     return (
         <div className="flex flex-col justify-center items-center p-10">
             <div className="text-center mb-10">
@@ -24,4 +24,4 @@ const Play = () => {
     );
 }
 
-export default Play;
+export default Home;

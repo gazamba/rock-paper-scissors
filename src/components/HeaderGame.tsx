@@ -1,6 +1,6 @@
 import React from "react";
-import { GameState } from "./types/GameAction";
-import { useGameContext } from "./hooks/useGameContext";
+import { GameState } from "../types/GameAction";
+import { useGameContext } from "../hooks/useGameContext";
 
 const HeaderGame = () => {
 
