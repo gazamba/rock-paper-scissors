@@ -61,7 +61,7 @@ export default function Game() {
       dispatch({ type: "SET_WINNER_GAME_OVER", winnerGameOver: "machine" });
       setShowModal(true);
     }
-  }, [state.playerScore, state.machineScore]);
+  }, [dispatch, state.playerScore, state.machineScore]);
 
   return (
     <>
