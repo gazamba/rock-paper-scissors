@@ -1,78 +1,111 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CountDown } from '../components/Countdown';
-import { Option } from '../components/Option';
-import { Tooltip } from '../components/Tooltip';
-import { useGameContext } from '../hooks/useGameContext';
-import { GameOption} from '../types/GameOption';
-import { sleep } from '../utils/sleep';
-import HeaderGame from '../components/HeaderGame';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Option } from "../components/Option";
+import { Tooltip } from "../components/Tooltip";
+import { useGameContext } from "../hooks/useGameContext";
+import HeaderGame from "../components/HeaderGame";
+import ModalWinner from "../components/modals/ModalWinner";
 
-const Game = () => {
-    const { dispatch, setPlayerChoice } = useGameContext();
-    const [isLoading, setIsLoading] = useState(false);
+export default function Game() {
+  const { dispatch, state } = useGameContext();
+  const { machineChoice, playerChoice } = state;
+  const resultAlreadyCalculated = useRef(false);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
-  async function handlePlayerChoice(playerOption: GameOption) {
-    setIsLoading(true);
-    await sleep(3000);
-    setIsLoading(false);
+  const getResult = useCallback(() => {
+    if (resultAlreadyCalculated.current) return;
 
-    if (playerOption) {
-      const options: GameOption[] = ['rock', 'paper', 'scissors'];
-      const randomIndex = Math.floor(Math.random() * options.length);
-      const selectedMachineChoice = options[randomIndex];
-      setPlayerChoice(playerOption);
+    resultAlreadyCalculated.current = true;
 
-      dispatch({
-        type: 'SET_MACHINE_CHOICE',
-        option: selectedMachineChoice,
-      });
+    if (playerChoice === "paper" && machineChoice === "paper") {
+      dispatch({ type: "SET_WINNER", winner: "draw" });
+    } else if (playerChoice === "paper" && machineChoice === "rock") {
+      dispatch({ type: "INCREMENT_PLAYER_SCORE" });
+      dispatch({ type: "SET_WINNER", winner: "player" });
+    } else if (playerChoice === "paper" && machineChoice === "scissors") {
+      dispatch({ type: "INCREMENT_MACHINE_SCORE" });
+      dispatch({ type: "SET_WINNER", winner: "machine" });
+    } else if (playerChoice === "rock" && machineChoice === "rock") {
+      dispatch({ type: "SET_WINNER", winner: "draw" });
+    } else if (playerChoice === "rock" && machineChoice === "paper") {
+      dispatch({ type: "INCREMENT_MACHINE_SCORE" });
+      dispatch({ type: "SET_WINNER", winner: "machine" });
+    } else if (playerChoice === "rock" && machineChoice === "scissors") {
+      dispatch({ type: "INCREMENT_PLAYER_SCORE" });
+      dispatch({ type: "SET_WINNER", winner: "player" });
+    } else if (playerChoice === "scissors" && machineChoice === "scissors") {
+      dispatch({ type: "SET_WINNER", winner: "draw" });
+    } else if (playerChoice === "scissors" && machineChoice === "rock") {
+      dispatch({ type: "INCREMENT_MACHINE_SCORE" });
+      dispatch({ type: "SET_WINNER", winner: "machine" });
+    } else if (playerChoice === "scissors" && machineChoice === "paper") {
+      dispatch({ type: "INCREMENT_PLAYER_SCORE" });
+      dispatch({ type: "SET_WINNER", winner: "player" });
+    } else {
+      dispatch({ type: "SET_WINNER", winner: "draw" });
     }
+  }, [dispatch, playerChoice, machineChoice]);
 
-  }
+  useEffect(() => {
+    if (!playerChoice || !machineChoice) navigate("/play", { replace: true });
 
-    return (
+    getResult();
+  }, [getResult, navigate, playerChoice, machineChoice]);
 
-        <>
-        <HeaderGame />
-        <div>
-            <div className="mb-5 mt-5 text-center text-2xl text-white">
-                <h2>Choose one:</h2>
-            </div>
+  useEffect(() => {
+    if (state.playerScore === 3) {
+      dispatch({ type: "SET_WINNER_GAME_OVER", winnerGameOver: "player" });
+      setShowModal(true);
+    } else if (state.machineScore === 3) {
+      dispatch({ type: "SET_WINNER_GAME_OVER", winnerGameOver: "machine" });
+      setShowModal(true);
+    }
+  }, [state.playerScore, state.machineScore]);
 
-            <div
-                className={`flex items-center justify-center ${isLoading && 'pointer-events-none'}`}
-            >
-                <Tooltip content="Rock">
-                    <Option
-                        value="rock"
-                        disabled={isLoading}
-                        onPlayerChoice={handlePlayerChoice}
-                    />
-                </Tooltip>
+  return (
+    <>
+      <HeaderGame />
+      <div className="mt-3 text-center">
+        <div className="mb-10 flex items-center justify-center gap-10">
+          <div className="animate-show-content-right space-x-2 space-y-2">
+            <span className="text-xl text-white">Player</span>
+            {playerChoice && (
+              <Tooltip content={playerChoice}>
+                <Option className="pointer-events-none" value={playerChoice} />
+              </Tooltip>
+            )}
+          </div>
 
-                <Tooltip content="Paper">
-                    <Option
-                        value="paper"
-                        disabled={isLoading}
-                        onPlayerChoice={handlePlayerChoice}
-                    />
-                </Tooltip>
+          <span className="text-4xl font-bold">X</span>
 
-                <Tooltip content="Scissors">
-                    <Option
-                        value="scissors"
-                        disabled={isLoading}
-                        onPlayerChoice={handlePlayerChoice}
-                    />
-                </Tooltip>
-            </div>
-
-            {isLoading && <CountDown />}
+          <div className="animate-show-content-left space-x-2 space-y-2">
+            <span className="text-xl text-white">Machine</span>
+            {machineChoice && (
+              <Tooltip content={machineChoice}>
+                <Option className="pointer-events-none" value={machineChoice} />
+              </Tooltip>
+            )}
+          </div>
         </div>
-        </>
-        
-    );
-};
 
-export default Game;
+        <p className="font-semibold text-white">
+          {state.winner &&
+            (state.winner === "draw"
+              ? "Draw!"
+              : `${state.winner === "player" ? "Player" : "Machine"} wins!`)}
+        </p>
+        <ModalWinner shouldModalRender={showModal} />
+        <button
+          onClick={() => {
+            dispatch({ type: "TRY_AGAIN" });
+            navigate("/play");
+          }}
+          className="mt-4 rounded-md bg-gray-200 px-4 py-2 font-bold text-dark-red transition-colors duration-200 ease-in-out hover:bg-dusty-rose"
+        >
+          Try again
+        </button>
+      </div>
+    </>
+  );
+}

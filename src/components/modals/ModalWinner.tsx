@@ -1,33 +1,34 @@
 import { useState, useEffect } from 'react';
+import { useGameContext } from '../../hooks/useGameContext';
+import { useNavigate } from 'react-router-dom';
+import { Modal } from './Modal';
 
-type PopUpWinnerProps = {
-    winnerChoice: string, 
-    loserChoice: string, 
-    isDraw: boolean,
-    onClose: () => void;
-}
+type ModalInstructionsProps = {
+    shouldModalRender: boolean;
+  };
 
-const ModalWinner = ({ winnerChoice, loserChoice, isDraw, onClose }: PopUpWinnerProps) => {
-    const [isVisible, setIsVisible] = useState(true);
+const ModalWinner = ( {shouldModalRender}: ModalInstructionsProps ) => {
+    const { dispatch, state } = useGameContext();
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsVisible(false);
-            onClose();
-        }, 3000);
-
-        return () => clearTimeout(timer);
-    }, [onClose]);
-
-    if (!isVisible) return null;
+    const tryAgain = () => {
+        dispatch({ type: 'TRY_AGAIN_GAME_OVER' });
+        navigate('/');
+    }
 
     return (
-        <div style={popupStyle}>
-            {!isDraw
-                ? <p>{`${winnerChoice} beats ${loserChoice}`}</p>
-                : <p>Draw!</p>
-            }
-        </div>
+        <Modal shouldModalRender={shouldModalRender}>
+            <p className='text-white'>
+                {state.winnerGameOver === 'player' && 'You won!'}
+                {state.winnerGameOver === 'machine' && 'You lost!'}
+            </p>
+            <button
+                onClick={tryAgain}
+                className="mt-4 rounded-md bg-gray-200 px-4 py-2 font-bold text-dark-red transition-colors duration-200 ease-in-out hover:bg-dusty-rose"
+            >
+                Try again
+            </button>
+        </Modal>
     );
 };
 

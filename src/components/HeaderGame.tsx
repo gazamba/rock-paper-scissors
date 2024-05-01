@@ -16,13 +16,11 @@ const HeaderGame = () => {
                         <div className="block justify-center px-auto py-3 text-white">
                             <div className="flex justify-between">
                                 <h2 className="font-semibold text-whiter">Player:</h2>
-                                {/* <span className="text-white">{state.playerScore}</span> */}
-                                <span className="text-white font-bold">2</span>
+                                <span className="text-white font-semibold">{state.playerScore}</span>
                             </div>
                             <div className="flex justify-between">
-                                <h2 className="font-semibold text-white mr-2">Computer:</h2>
-                                {/* <span className="text-white">{state.playerScore}</span> */}
-                                <span className="text-white font-bold">2</span>
+                                <h2 className="font-semibold text-white mr-2">Machine:</h2>
+                                <span className="text-white font-semibold">{state.machineScore}</span>
                             </div>
                         </div>
                     </div>

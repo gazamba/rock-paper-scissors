@@ -7,9 +7,12 @@ export type GameAction = {
     | 'SET_WINNER'
     | 'SET_PLAYER_CHOICE'
     | 'SET_MACHINE_CHOICE'
+    | 'SET_WINNER_GAME_OVER'
+    | 'TRY_AGAIN_GAME_OVER'
     | 'TRY_AGAIN';
   option?: GameOption;
   winner?: 'player' | 'machine' | 'draw';
+  winnerGameOver?: 'player' | 'machine';
 };
 
 export type GameState = {
@@ -18,4 +21,5 @@ export type GameState = {
   playerChoice: GameOption | null;
   machineChoice: GameOption | null;
   winner?: 'player' | 'machine' | 'draw' | null;
+  winnerGameOver?: 'player' | 'machine' | null;
 };

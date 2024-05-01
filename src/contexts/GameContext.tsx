@@ -38,6 +38,17 @@ function reducer(state: GameState, action: GameAction): GameState {
         playerChoice: null,
       };
 
+    case 'TRY_AGAIN_GAME_OVER':
+      return {
+        ...state,
+        winner: null,
+        machineChoice: null,
+        playerChoice: null,
+        playerScore: 0,
+        machineScore: 0,
+        winnerGameOver: null
+      };
+
     case 'SET_MACHINE_CHOICE':
       return {
         ...state,
@@ -50,6 +61,12 @@ function reducer(state: GameState, action: GameAction): GameState {
         playerChoice: action.option ?? null,
       };
 
+     case 'SET_WINNER_GAME_OVER':
+      return {
+        ...state,
+        winnerGameOver: action.winnerGameOver
+      }; 
+
     default:
       return state;
   }
@@ -61,6 +78,7 @@ const initialGameState: GameState = {
   playerChoice: null,
   machineChoice: null,
   winner: null,
+  winnerGameOver: null
 };
 
 export function GameProvider({ children }: { children: React.ReactNode }) {

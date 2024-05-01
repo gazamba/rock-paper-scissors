@@ -6,7 +6,7 @@ const PlayButton = () => {
     const navigate = useNavigate();
 
     const playButtonAction = () => {
-        navigate("/game");
+        navigate("/play");
     };
     return(
         <div className="flex flex-col justify-center items-center mt-10">

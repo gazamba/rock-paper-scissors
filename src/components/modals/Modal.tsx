@@ -3,10 +3,9 @@ import { cn } from '../../utils/cn';
 
 type ModalProps = {
   shouldModalRender: boolean;
-  handleClose: () => void;
 } & JSX.IntrinsicElements['dialog'];
 
-export function Modal({ className, shouldModalRender: shouldRender, handleClose, children }: ModalProps) {
+export function Modal({ className, shouldModalRender: shouldRender, children }: ModalProps) {
   if (!shouldRender) return null;
 
   return (
@@ -28,8 +27,10 @@ export function Modal({ className, shouldModalRender: shouldRender, handleClose,
           className,
         )}
       >
-        <span className="close" onClick={handleClose}>&times;</span>
-        {children}
+
+        <div className="bg-dark-red p-5 rounded-lg">
+          {children}
+        </div>
       </dialog>
     </ReactPortal>
   );

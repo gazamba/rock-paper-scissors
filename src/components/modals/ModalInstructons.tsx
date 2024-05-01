@@ -6,7 +6,6 @@ type ModalInstructionsProps = {
   handleClose: () => void;
 };
 
-
 const ModalInstructions = ({shouldModalRender, handleClose} : ModalInstructionsProps) => {
   
   // const handleModalClose = () => {
@@ -16,9 +15,8 @@ const ModalInstructions = ({shouldModalRender, handleClose} : ModalInstructionsP
   return (
     <Modal
       shouldModalRender={shouldModalRender}
-      handleClose={handleClose}
       >
-      <div className="bg-dark-red p-8 rounded-lg">
+      <div className="bg-dark-red p-3 rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-white">Instructions</h2>
         <ul className="ul-instructions text-lg text-dusty-rose">
           <li>The player chooses one of three options: Rock, Paper, or Scissors.</li>
