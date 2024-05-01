@@ -1,16 +1,26 @@
 # Rock, Paper, Scissors: Dive into the classic game with a modern twist!
 
+>>>> PENDING EXECUTABLE APP
+
 This Rock-Paper-Scissors game is built with React, TypeScript, and Vite, offering an intuitive, fast, and responsive gaming experience.
 
-== PENDING EXECUTABLE APP AND SNAPHOTS ==
+## 📷 Image preview
+
+Home:
+<img width="1436" alt="Screenshot 2024-05-01 at 18 08 39" src="https://github.com/gazamba/rock-paper-scissors/assets/118688711/6aa0f0d2-72d2-45f1-8ac0-06d4d5d680b2">
+
+Instructions:
+<img width="1434" alt="Screenshot 2024-05-01 at 18 09 30" src="https://github.com/gazamba/rock-paper-scissors/assets/118688711/8bcfdf76-8d39-4016-b523-0140b874cc48">
+
+Player choice:
+<img width="1434" alt="Screenshot 2024-05-01 at 18 09 51" src="https://github.com/gazamba/rock-paper-scissors/assets/118688711/de02a270-0b1a-42a9-8b47-98807a489413">
+
+Round result:
+<img width="1434" alt="Screenshot 2024-05-01 at 18 10 07" src="https://github.com/gazamba/rock-paper-scissors/assets/118688711/93bd2cfe-cf81-416c-8e7c-ac8a36779dd6">
 
 ## 🚀 Getting Started
 
 Follow these steps to set up and run the project in your local environment.
-
-### Prerequisites
-- Node.js v14.x.x or higher (PENDING CHECK)
-- Npm v6.x.x or higher      (PENDING CHECK)
 
 ### Installation and Running Instructions
 #### 1. Clone the repository
@@ -32,6 +42,7 @@ npm run dev
 - TypeScript: A typed superset of JavaScript.
 - Vite: A build tool that aims to provide faster and leaner development experience for modern web projects.
 - TaiwindCSS: A utility-first CSS framework for rapidly building custom user interfaces.
+  
 ## 🎮 Game Rules
 - The player chooses one of three options: Rock, Paper, or Scissors.
 - The machine makes its choice.
