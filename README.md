@@ -1,6 +1,6 @@
 # Rock, Paper, Scissors: Dive into the classic game with a modern twist!
 
->>>> PENDING EXECUTABLE APP
+[Play the game!](https://rock-paper-scissors-phi-five.vercel.app/)
 
 This Rock-Paper-Scissors game is built with React, TypeScript, and Vite, offering an intuitive, fast, and responsive gaming experience.
 
