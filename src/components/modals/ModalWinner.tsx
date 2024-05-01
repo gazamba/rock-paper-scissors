@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useGameContext } from "../../hooks/useGameContext";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "./Modal";
@@ -30,17 +29,6 @@ const ModalWinner = ({ shouldModalRender }: ModalInstructionsProps) => {
       </button>
     </Modal>
   );
-};
-
-const popupStyle = {
-  position: "fixed" as "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "5px",
-  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
 };
 
 export default ModalWinner;
