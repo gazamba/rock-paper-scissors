@@ -18,7 +18,7 @@ Player choice:
 Round result:
 <img width="1434" alt="Screenshot 2024-05-01 at 18 10 07" src="https://github.com/gazamba/rock-paper-scissors/assets/118688711/93bd2cfe-cf81-416c-8e7c-ac8a36779dd6">
 
-## 🚀 Getting Started
+## 🚀 Running Local
 
 Follow these steps to set up and run the project in your local environment.
 
