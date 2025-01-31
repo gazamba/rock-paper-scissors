@@ -25,7 +25,7 @@ Follow these steps to set up and run the project in your local environment.
 ### Installation and Running Instructions
 #### 1. Clone the repository
 ```
-git clone https://github.com/your_username/rock-paper-scissors.git
+git clone https://github.com/gazamba/rock-paper-scissors.git
 cd rock-paper-scissors
 ```
 
